@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{deal.title}} - Placeful</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:url" content="{{facebook_url}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{deal.title}}" />
+  <meta property="og:description" content="{{deal.description}}" />
+  <meta property="og:image" content="{{facebook_image_url}}" />
+  <meta property="al:ios:app_store_id" content="944253010" />
+  <meta property="al:ios:url" content="placeful://promotion/{{deal.deal_id}}" />
+  <meta property="al:ios:app_name" content="Placeful" />
+  <meta property="fb:app_id" content="692286700888072" />
+  <!-- <meta property="al:android:package" content="com.imdb.mobile" />
+<meta property="al:android:url" content="imdb://title/tt0117500" />
+<meta property="al:android:app_name" content="IMDb Movies & TV" /> -->
+  <meta name="twitter:card" content="app">
+  <meta name="twitter:site" content="@placefulapp">
+  <meta name="twitter:description" content="{{deal.description}}">
+  <meta name="twitter:app:country" content="US">
+  <meta name="twitter:app:name:iphone" content="Placeful">
+  <meta name="twitter:app:id:iphone" content="944253010">
+  <meta name="twitter:app:url:iphone" content="placeful://promotion/{{deal.deal_id}}">
+  <meta name="twitter:app:name:ipad" content="Placeful">
+  <meta name="twitter:app:id:ipad" content="944253010">
+  <meta name="twitter:app:url:ipad" content="placeful://promotion/{{deal.deal_id}}">
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/cs/css/reset.css">
+  <!-- CSS reset -->
+  <link rel="stylesheet" href="/cs/css/style.css">
+  <!-- Resource style -->
+  <script src="/cs/js/modernizr.js"></script>
+
+  <script type="text/javascript">
+    (function(h, l, i, n, k, s)
+    {
+      s = h.createElement(i);
+      s.type = "text/javascript";
+      s.async = 1;
+      s.src = l + n + ".js";
+      k = h.getElementsByTagName(i)[0];
+      k.parentNode.insertBefore(s, k);
+    })(document, "//cdn.hokolinks.com/banner/v1/", "script", "7c5a5d6c4ef99e88");
+  </script>
+
+  <!-- Modernizr -->
+  <style media="screen">
+    .cd-image-block li {
+      position: relative;
+    }
+    
+    .overlay {
+      display: table;
+      content: '';
+      width: 80%;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      height: 30%;
+      bottom: 0;
+      margin: 0 auto;
+    }
+    
+    header {
+      padding: 10px 0 10px 40px;
+    }
+  </style>
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+</head>
+
+<body>
+  <main>
+    <div class="cd-image-block">
+      <ul class="cd-images-list">
+        <li class="is-selected" style="background: url({{deal.large_image}}) no-repeat;background-size:cover">
+        </li>
+      </ul>
+      <!-- .cd-images-list -->
+    </div>
+    <!-- .cd-image-block -->
+
+    <div class="cd-content-block">
+      <header>
+        <p style="margin:0;"><img src="/images/logo.png" alt="" /></p>
+        <a href="https://app.appsflyer.com/id944253010?pid=landing_page" class="" target="_blank">
+          <img src="/images/app_store2.png" width="180px">
+        </a>
+        <a href="http://bit.ly/1iKdE8o" class="btn btn-primary waiting-list" target="_blank">
+          <img src="/images/app_andriod_badges2.png" alt="" width="180px" />
+        </a>
+      </header>
+      <ul>
+        <li class="is-selected">
+          <div>
+            <h2>{{deal.title}}</h2>
+
+            <p>
+              <span style="color: black;">{{deal.merchant_name}}</span>
+              <br /> {{deal.merchant_address}}
+            </p>
+
+            <p>
+              <span>{{tags}}</span>
+              <br /> {{deal.description}}
+            </p>
+
+            <p>
+              Expires on {{deal.end_date | date('F jS, Y')}}
+            </p>
+
+            <p>{{deal.instructions}}</p>
+
+            <p>{{deal.fine_print}}</p>
+
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+    <!-- .cd-content-block -->
+
+  </main>
+  <!-- .cd-main -->
+
+  <!-- <script src="/cs/js/jquery-2.1.4.js"></script>
+  <script src="/cs/js/main.js"></script> -->
+  <!-- Resource jQuery -->
+</body>
+
+</html>
