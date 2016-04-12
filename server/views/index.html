@@ -103,8 +103,31 @@
     
     .links li a {
       text-transform: uppercase;
-      letter-spacing: 1.3px;
       font-size: 0.7em;
+    }
+    
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9em;
+      position: relative;
+      top: 5px;
+      letter-spacing: 1.3px;
+      margin: 0 5px;
+    }
+    
+    .top-nav a:hover {
+      border-bottom: 2px solid white;
+    }
+    
+    .text-center {
+      text-align: right;
+    }
+    
+    sup {
+      color: white;
+      top: -1.6em;
+      padding-left: 2px;
     }
   </style>
 </head>
@@ -115,7 +138,15 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <nav>
     <div class="container">
-      <a href=""><img src="/images/placeful-logo-white.png" alt="discover events and places to eat in the city" /></a>
+      <div class="row">
+        <div class="six columns">
+          <a href=""><img src="/images/placeful-logo-white.png" alt="discover events and places to eat in the city" /></a><sup>™</sup>
+        </div>
+        <div class="six columns text-center top-nav">
+          <a href="https://merchant.placeful.co">For Business</a>
+        </div>
+      </div>
+
     </div>
   </nav>
   <header>
@@ -131,7 +162,7 @@
       <div class="twelve columns">
         <h4 style="margin:0;padding:0;"><strong>Meet your personal deals concierge</strong></h4>
         <p>
-          With endless amazing places in New York offering specials at any given time, it's nearly impossible to keep track of them all. With Placeful, you don't have to!
+          With endless amazing places in New York offering specials at any given time, it's nearly impossible to keep track of them all. With Placeful, you don't have to, because we track all your favorite local happenings in one place.
         </p>
       </div>
     </div>
@@ -277,7 +308,7 @@
     <div class="container">
       <div class="row">
         <div class="four columns">
-          <a href=""><img src="/images/placeful-logo-white.png" alt=""></a>
+          <a href=""><img src="/images/placeful-logo-white.png" alt=""></a><sup style="top: -2.6em">™</sup>
           <p>&copy; 2016</p>
         </div>
         <div class="eight columns">
