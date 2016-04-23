@@ -307,3 +307,22 @@ input:checked ~ .modal__overlay {
 .links li a:hover{
   text-decoration: underline;
 }
+
+.artwork{
+  position: relative;
+}
+.mask{
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+width: 58px;
+height: 58px;
+background: url(/images/mask58.png) 0 0 no-repeat;
+background-size: 58px 58px;
+}
+
+.center{
+  text-align: center;
+}
