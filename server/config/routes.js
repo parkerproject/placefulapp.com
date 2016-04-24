@@ -144,10 +144,6 @@ module.exports = function (server) {
     method: 'POST',
     path: '/webhook/save',
     config: controller.webhook_save.index
-  }, {
-    method: 'GET',
-    path: '/careers',
-    config: controller.careers.index
   }]
   return routeTable
 }

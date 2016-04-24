@@ -315,14 +315,51 @@ input:checked ~ .modal__overlay {
 display: block;
 position: absolute;
 top: 0;
-left: 0;
+left: 50%;
 z-index: 1;
 width: 58px;
 height: 58px;
 background: url(/images/mask58.png) 0 0 no-repeat;
 background-size: 58px 58px;
+margin-left: -29px;
 }
 
 .center{
   text-align: center;
+}
+
+.phone_bg{
+  background: url(/images/iPhone-6-resized.png) no-repeat;
+  width: 300px;
+  height: 593px;
+}
+
+.features h5{
+  font-size: 1.7rem;
+font-weight: bold;
+}
+
+.features p{
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.divider-line{
+  width: 200px;
+  border-top: 3px solid #bd382a;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.slick-slide{
+  margin-top: 73px;
+  margin-left: 24px!important;
+}
+
+
+@media (max-width: 1024px) {
+.mobile-hide{
+  display: none;
+}
+
 }

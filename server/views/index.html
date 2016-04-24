@@ -7,7 +7,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Do more. Spend less. - Placeful mobile app</title>
+  <title>Do more. Spend less. - Placeful™ mobile app</title>
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -55,6 +55,8 @@
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/skeleton.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -173,6 +175,26 @@
     </p>
 
   </header>
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+      <h4 style="margin:20px 0 0 0"><strong>Meet your local concierge</strong></h4>
+      <p style="font-size:1.5rem;font-weight:300;">We track the endless amazing places in New York offering specials at any given time and present them to you.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+      <h4 style="margin:20px 0 0 0"><strong>How Does Placeful Work?</strong></h4>
+      <p style="font-size:1.5rem;font-weight:300;">Placeful provides you with a curated list of promotions that are running at your local places (bars, restaurants, event venues, spas,
+        florists, etc) at any given time.
+        Anything noteworthy on the sidewalk chalkboards throughout the city goes into Placeful.
+         Local spots update promos in real-time throughout the day, so you're always up to date.
+         Take advantage of promos happening right now, or save promos that catch your eye for future plans.</p>
+      </div>
+    </div>
+  </div>
   <div class="container space-top">
        <div class="row">
          <div class="twelve columns">
@@ -181,7 +203,46 @@
        </div>
        <div class="row center">
          <div class="twelve columns">
-           <h4>What is Placeful<sup>™</sup></h4>
+           <h4 style="margin-bottom:0;">What is Placeful<sup style="color: black;top: -1.1em;">™</sup> ?</h4>
+           <p style="font-size:1.5rem;font-weight:300;">A new way to experience local</p>
+           <span class="divider-line"></span>
+         </div>
+       </div>
+       <div class="row features">
+         <div class="four columns" style="padding-top: 70px;">
+          <div class="item">
+           <h5>Save money</h5>
+           <p>Placeful makes it easy to take advantage of the best promos throughout the city. No matter where you are, or what you're doing.</p>
+         </div>
+         <div class="item">
+           <h5>Discover &amp; follow local places</h5>
+           <p>Let Placeful be your guide to hidden local treasures.
+             Switch up your routine and discover new places daily. Follow your favorite local bars and restaurants.</p>
+         </div>
+         </div>
+         <div class="four columns mobile-hide">
+           <div class="phone_bg">
+             <div><img src="/images/phone_screens/login.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/content.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/filter.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/home.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/search.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/my_likes.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/interests.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/ticket.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/my_tickets.png" alt="" width="250"/></div>
+            <div><img src="/images/phone_screens/places.png" alt="" width="250"/></div>
+           </div>
+         </div>
+         <div class="four columns center" style="padding-top: 70px;">
+           <div class="item">
+            <h5>Save time &amp; energy</h5>
+            <p>Find where to go on a whim. Browse through promos happening now, closest to where you are. Easily share plans with friends.</p>
+          </div>
+          <div class="item">
+            <h5>Tailored for you</h5>
+            <p>We find you promos based on your interests, location, and plans.</p>
+          </div>
          </div>
        </div>
   </div>
@@ -281,7 +342,7 @@
     <div class="container">
       <div class="row">
         <div class="four columns">
-          <a href=""><img src="/images/placeful-logo-white.png" alt=""></a><sup style="top: -2.6em">™</sup>
+          <a href=""><img src="/images/placeful-logo-white.png" alt=""></a><sup style="top: -1.4em;color:white;">™</sup>
           <p>&copy; 2016</p>
         </div>
         <div class="eight columns">
@@ -336,8 +397,23 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/js/slick.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.phone_bg').slick({
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
+      autoplay: true
+    });
+  });
+</script>
   <script>
     window.skit = (function()
     {
