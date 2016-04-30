@@ -62,10 +62,6 @@ module.exports = function (server) {
     config: controller.email.welcomeEmail
   }, {
     method: 'GET',
-    path: '/giveaway',
-    config: controller.giveaway.index
-  }, {
-    method: 'GET',
     path: '/terms',
     config: controller.static.terms
   }, {
@@ -109,10 +105,6 @@ module.exports = function (server) {
     path: '/deals-activities/feed.xml',
     config: controller.activities_rss.main
   }, {
-    method: 'GET',
-    path: '/promo',
-    config: controller.promo.testing
-  }, {
     method: 'POST',
     path: '/lab/payment',
     config: controller.payment.index
@@ -144,6 +136,10 @@ module.exports = function (server) {
     method: 'POST',
     path: '/webhook/save',
     config: controller.webhook_save.index
+  }, {
+    method: 'GET',
+    path: '/contest',
+    config: controller.promo.index
   }]
   return routeTable
 }
