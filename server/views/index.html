@@ -166,7 +166,7 @@
           <a href="/"><img src="/images/Red-Logo_placeful_small.png" alt="discover events and places to eat in the city" /></a><sup>™</sup>
         </div>
         <div class="six columns text-center top-nav">
-          <a href="">Promotions</a>
+          <a href="#promos">Promotions</a>
           <a href="https://merchant.placeful.co">For Business</a>
         </div>
       </div>
@@ -177,7 +177,7 @@
     <h1 class="center">Do more. Spend less.</h1>
     <p class="center" style="margin-bottom:0;font-size:20px;">Discover specials in your city.</p>
     <p class="center">
-      <a class="" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8" target="_blank"><img src="/images/itunes3.png" /></a>
+      <a class="download-button" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8" target="_blank"><img src="/images/itunes3.png" /></a>
     </p>
 
   </header>
@@ -249,14 +249,14 @@
        </div>
   </div>
 
-  <section class="cities">
+  <section class="bottom">
     <div class="container">
       <div class="row">
         <div class="twelve columns">
           <h2 class="center">Find Amazing Places to Explore<br /> in New York City</h2>
           <p class="center">Coming to other cities soon.</p>
           <p class="center">
-            <a class="" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8" target="_blank"><img src="/images/itunes3.png" /></a>
+            <a class="download-button" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8" target="_blank"><img src="/images/app.png" /></a>
           </p>
         </div>
       </div>
@@ -278,7 +278,7 @@
     <section class="results">
     <div class="container">
       <div class="row">
-        <div class="twelve columns">
+        <div class="twelve columns" id="promos">
         {% for promo in promos %}
          <div class="item">
           <span><a href="http://placefulapp.com/promotion/{{promo.deal_id}}/{{promo.slug}}" target="_blank">{{promo.title}}</a><span class="link-icon"></span></span>
@@ -288,19 +288,19 @@
         </div>
         {% endfor %}
 
-        <p class="u-pull-right"><a href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8">View more</a></p>
+        <p class="u-pull-right download-button"><a href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8">View more</a></p>
       </div>
     </div>
 
   </section>
 
-   <section class="bottom">
+   <section class="cities">
     <div class="container">
       <div class="row">
         <div class="twelve columns">
           <h2 class="center" style="margin-bottom: 0;"><strong>Start doing more</strong>.</h2>
           <p class="center" style="font-size: 20px;">Join Placeful today. It's free and it's fast.</p>
-          <p class="center"><a class="button button-alerts" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8">Join Now</a></p>
+          <p class="center"><a class="button button-alerts download-button" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=landing_page&mt=8">Join Now</a></p>
         </div>
       </div>
     </div>
@@ -369,65 +369,13 @@
 
 
 
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="/js/slick.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/scripts.js"></script>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.phone_bg').slick({
-      infinite: true,
-      speed: 500,
-      fade: true,
-      cssEase: 'linear',
-      autoplay: true
-    });
-  });
-</script>
   <script>
-    window.skit = (function()
-    {
-      var objects = {};
-      var modules = {};
 
-      function define(resourcePath, deps, fn)
-      {
-        modules[resourcePath] = {
-          deps: deps,
-          fn: fn
-        };
-      }
-
-      function load(resourcePath)
-      {
-        if (!(resourcePath in objects))
-        {
-          if (resourcePath in modules)
-          {
-            var module = modules[resourcePath];
-            var args = [];
-            for (var i = 0; i < module.deps.length; i++)
-            {
-              args.push(load(module.deps[i]));
-            }
-            objects[resourcePath] = module.fn.apply(window, args);
-          }
-          else
-          {
-            objects[resourcePath] = null;
-          }
-        }
-        return objects[resourcePath];
-      }
-      return {
-        define: define,
-        load: load
-      };
-    })();
-  </script>
-  <script src="https://d2kfjaekmjmy1l.cloudfront.net/websites-public-v4f4a4d181b72.js" data-bundle="websites-public"></script>
-  <script>
     (function(i, s, o, g, r, a, m)
     {
       i['GoogleAnalyticsObject'] = r;
@@ -444,35 +392,13 @@
 
     ga('create', 'UA-6101640-24', 'auto');
     ga('send', 'pageview');
-  </script>
-
-  <script type="text/javascript">
-    (function()
-    {
-      window._pa = window._pa ||
-      {};
-      // _pa.orderId = "myOrderId"; // OPTIONAL: attach unique conversion identifier to conversions
-      // _pa.revenue = "19.99"; // OPTIONAL: attach dynamic purchase values to conversions
-      // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
-      var pa = document.createElement('script');
-      pa.type = 'text/javascript';
-      pa.async = true;
-      pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.marinsm.com/serve/55f49613aca157488100006e.js";
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(pa, s);
-    })();
-
-    // $('.text-me').on('click', function() {
-    //   ga('send', 'event', 'button', 'click', 'text-me-button');
-    // });
-
-    $('.download-button').on('click', function()
-    {
+    $(document).on('click', 'download-button', function(){
       ga('send', 'event', 'button', 'click', 'download-button');
       window._pq = window._pq || [];
       _pq.push(['track', 'download']);
     });
   </script>
+
 </body>
 
 </html>

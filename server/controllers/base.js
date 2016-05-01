@@ -2,7 +2,7 @@
 require('dotenv').load()
 const req = require('request')
 const satelize = require('satelize')
-// let baseUrl =
+const ipify = require('ipify')
 
 class BaseUrl {
   constructor() {
@@ -17,20 +17,25 @@ module.exports = {
   index: {
     handler: function (request, reply) {
       let baseUrl = new BaseUrl().render()
-      satelize.satelize({ip: request.info.remoteAddress}, function (err, payload) {
-        if (payload != null) {
-          let location = `${payload.longitude}, ${payload.latitude}`
-          baseUrl = `${baseUrl}&geo=${location}`
-        }
-        req(baseUrl, function (error, response, body) {
-          if (!error && response.statusCode === 200) {
-            let promos = JSON.parse(body).results
-            reply.view('index', {
-              promos: promos
-            })
-          } else {
-            reply.view('index', {})
+
+      ipify((err, ip) => {
+        if (err)console.log(err)
+        satelize.satelize({ip: ip}, function (error, payload) {
+          if (error)console.log(error)
+          if (payload != null) {
+            let location = `${payload.longitude}, ${payload.latitude}`
+            baseUrl = `${baseUrl}&geo=${location}`
           }
+          req(baseUrl, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+              let promos = JSON.parse(body).results
+              reply.view('index', {
+                promos: promos
+              })
+            } else {
+              reply.view('index', {})
+            }
+          })
         })
       })
     }

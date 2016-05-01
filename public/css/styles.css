@@ -73,7 +73,7 @@ input[type="button"].button-primary,
 }
 
 .cities {
-    background: url(/images/cities.png) no-repeat;
+    background: url(/images/header.png) no-repeat;
     background-size: cover;
     height: 400px;
     color: white;
