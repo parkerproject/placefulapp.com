@@ -9,7 +9,7 @@ module.exports = {
       req('http://api.placeful.co/promotion?key=' + process.env.API_KEY + '&promotion_id=' + request.params.promotion_id, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           let deal = JSON.parse(body)
-          let facebook_url = 'http://placefulapp.com/deal/' + request.params.deal_id
+          let facebook_url = 'http://placefulapp.com/promotion/' + request.params.deal_id + '/' + request.params.slug
           let tags = deal[0].tags
           let hashtags = tags.map(function (tag) {
             return '#' + tag

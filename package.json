@@ -53,6 +53,7 @@
     "require-directory": "~2.0.0",
     "rss": "^1.1.1",
     "s3": "^4.4.0",
+    "satelize": "^0.2.0",
     "sendgrid": "^1.8.0",
     "stripe": "^4.0.0",
     "swig": "~1.4.2",

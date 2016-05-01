@@ -1,15 +1,38 @@
-// This is the base controller. Used for base routes, such as the default index/root path, 404 error pages, and others.
+'use strict'
 require('dotenv').load()
+const req = require('request')
+const satelize = require('satelize')
+// let baseUrl =
+
+class BaseUrl {
+  constructor() {
+    this.url = `http://api.placeful.co/promotions?key=${process.env.API_KEY}&limit=6&user_id=parker&tab=today`
+  }
+  render() {
+    return this.url
+  }
+}
 
 module.exports = {
   index: {
     handler: function (request, reply) {
-      reply.view('index', {
-        title: ''
+      let baseUrl = new BaseUrl().render()
+      satelize.satelize({ip: request.info.remoteAddress}, function (err, payload) {
+        if (payload != null) {
+          let location = `${payload.longitude}, ${payload.latitude}`
+          baseUrl = `${baseUrl}&geo=${location}`
+        }
+        req(baseUrl, function (error, response, body) {
+          if (!error && response.statusCode === 200) {
+            let promos = JSON.parse(body).results
+            reply.view('index', {
+              promos: promos
+            })
+          } else {
+            reply.view('index', {})
+          }
+        })
       })
-    },
-    app: {
-      name: 'index'
     }
   },
   fbconfirm: {
