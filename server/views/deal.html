@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{deal.title}} - Placeful</title>
+  <title>{{deal.title}} - Placeful™</title>
   <meta charset="utf-8" />
+  <meta name="description" content="{{deal.description}}">
+  <meta name="keywords" content="{{deal.tags}}">
+  <meta name="author" content="Placeful">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:url" content="{{facebook_url}}" />
   <meta property="og:type" content="article" />
@@ -70,6 +73,50 @@
     header {
       padding: 10px 0 10px 40px;
     }
+
+    .btn{
+      background-color: #00a65a;
+      border: none;
+      box-shadow: 0 0 28px rgba(0, 0, 0, .2)!important;
+      color: #fff;
+      cursor: pointer;
+      display: block;
+      font-size: 0.9em;
+      font-weight: bold;
+      height: calc(3.5em + 2px);
+      letter-spacing: 0.25em;
+      line-height: 3.5em;
+      outline: 0;
+      text-align: center;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      -webkit-appearance: none;
+      width: 250px;
+    }
+
+    .mask {
+    display: block;
+    position: absolute;
+    top: 0;
+    /*left: 50%;*/
+    z-index: 1;
+    width: 58px;
+    height: 58px;
+    background: url(/images/mask58.png) 0 0 no-repeat;
+    background-size: 58px 58px;
+    /*margin-left: -29px;*/
+   }
+
+   .artwork {
+    position: relative;
+    }
+
+    .center{
+      /*text-align: center;*/
+    }
   </style>
   <link rel="icon" type="images/png" href="/images/favicon.png">
 </head>
@@ -87,23 +134,13 @@
 
     <div class="cd-content-block">
       <header>
-        <p style="margin:0;"><img src="/images/logo.png" alt="" /></p>
-        <a href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=promo_page&mt=8" class="" target="_blank">
-          <img src="/images/app_store2.png" width="180px">
-        </a>
-        <a href="http://bit.ly/1iKdE8o" class="btn btn-primary waiting-list" target="_blank">
-          <img src="/images/app_andriod_badges2.png" alt="" width="180px" />
-        </a>
+      <div class="artwork center"><img width="58" height="58" alt="Placeful™ - Discover new local spots" class="artwork" src="https://dl.dropbox.com/s/36f4izjck7bk7yu/Icon-29%402x.png?dl=0"><span class="mask"></span></div>
+       <h3 style="margin-bottom:0;"><img src="http://placefulapp.com/images/logo.png"/><sup style="color: black;top: -0.9em;position:relative;">™</sup></h3>
       </header>
       <ul>
         <li class="is-selected">
           <div>
             <h2>{{deal.title}}</h2>
-
-            <p>
-              <span style="color: black;">{{deal.merchant_name}}</span>
-              <br /> {{deal.merchant_address}}
-            </p>
 
             <p>
               <span>{{tags}}</span>
@@ -114,9 +151,7 @@
               Expires on {{deal.end_date | date('F jS, Y')}}
             </p>
 
-            <p>{{deal.instructions}}</p>
-
-            <p>{{deal.fine_print}}</p>
+            <p><a class="btn" href="https://itunes.apple.com/app/apple-store/id1102813029?pt=118188314&ct=promo_page&mt=8">Get promo in app</a></p>
 
           </div>
         </li>
