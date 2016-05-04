@@ -1,6 +1,6 @@
 'use strict'
 require('dotenv').load()
-const collections = ['webhook', 'promotions']
+const collections = ['webhook', 'promotions', 'test']
 const db = require('mongojs').connect(process.env.DEALSBOX_MONGODB_URL, collections)
 // var intercom = require('intercom.io')
 var Keen = require('keen-js')
@@ -15,6 +15,7 @@ module.exports = {
   index: {
     handler: function (request, reply) {
       var data = request.payload.data.item.metadata
+      db.test.save(request.payload)
       if (data == null) {
         reply('no data')
       }
