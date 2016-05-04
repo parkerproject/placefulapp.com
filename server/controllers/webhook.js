@@ -1,54 +1,51 @@
-require('dotenv').load();
-var collections = ['webhook', 'deals'];
-var db = require("mongojs").connect(process.env.DEALSBOX_MONGODB_URL, collections);
-// var intercom = require('intercom.io');
-var Keen = require("keen-js");
+'use strict'
+require('dotenv').load()
+const collections = ['webhook', 'promotions']
+const db = require('mongojs').connect(process.env.DEALSBOX_MONGODB_URL, collections)
+// var intercom = require('intercom.io')
+var Keen = require('keen-js')
 var client = new Keen({
   projectId: process.env.KEEN_PROJECTID,
   writeKey: process.env.KEEN_WRITEKEY
-});
+})
 
-var score = 1;
-
-
+var score = 1
 
 module.exports = {
   index: {
     handler: function (request, reply) {
-
-      var data = request.payload.data.item.metadata;
+      var data = request.payload.data.item.metadata
       if (data == null) {
-        reply('no data');
+        reply('no data')
       }
 
       if (data) {
         data.keen = {
           timestamp: new Date().toISOString()
-        };
+        }
       }
 
-      db.deals.find({
+      db.promotions.find({
         deal_id: data.deal_id
       }).limit(1, function (err, result) {
         db.webhook.find({
           deal_id: data.deal_id
         }).limit(1, function (err, deal) {
           if (deal.length === 0) {
+            result[0].score = score
+            result[0].event = 'views'
 
-            result[0].score = score;
+            delete result[0]['_id']
 
-            delete result[0]['_id'];
+            db.webhook.save(result[0])
 
-            db.webhook.save(result[0]);
-
-            client.addEvent("views", result, function (err, res) {
-
+            client.addEvent('views', result, function (err, res) {
               if (err) {
-                console.log(err);
+                console.log(err)
               } else {
-                reply('success');
+                reply('success')
               }
-            });
+            })
           } else {
             db.webhook.findAndModify({
               query: {
@@ -61,15 +58,13 @@ module.exports = {
               },
               new: true
             }, function (err, doc, lastErrorObject) {
-              reply('update successful');
-            });
+              reply('update successful')
+            })
           }
         })
 
-
-
-      });
+      })
 
     }
   }
-};
+}

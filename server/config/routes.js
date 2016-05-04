@@ -122,20 +122,8 @@ module.exports = function (server) {
     config: controller.base.business
   }, {
     method: 'POST',
-    path: '/webhook/view',
+    path: '/webhook',
     config: controller.webhook.index
-  }, {
-    method: 'POST',
-    path: '/webhook/share',
-    config: controller.webhook_share.index
-  }, {
-    method: 'POST',
-    path: '/webhook/buy',
-    config: controller.webhook_buy.index
-  }, {
-    method: 'POST',
-    path: '/webhook/save',
-    config: controller.webhook_save.index
   }, {
     method: 'GET',
     path: '/contest',
