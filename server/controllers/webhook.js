@@ -3,18 +3,18 @@ require('dotenv').load()
 const collections = ['webhook', 'promotions', 'test']
 const db = require('mongojs').connect(process.env.DEALSBOX_MONGODB_URL, collections)
 // var intercom = require('intercom.io')
-var Keen = require('keen-js')
-var client = new Keen({
+const Keen = require('keen-js')
+const client = new Keen({
   projectId: process.env.KEEN_PROJECTID,
   writeKey: process.env.KEEN_WRITEKEY
 })
 
-var score = 1
+let score = 1
 
 module.exports = {
   index: {
     handler: function (request, reply) {
-      var data = request.payload.data.item.metadata
+      let data = request.payload.data ? request.payload.data.item.metadata : ''
       db.test.save(request.payload)
       if (data == null) {
         reply('no data')
@@ -29,9 +29,11 @@ module.exports = {
       db.promotions.find({
         deal_id: data.deal_id
       }).limit(1, function (err, result) {
+        if (err) console.log(err)
         db.webhook.find({
           deal_id: data.deal_id
         }).limit(1, function (err, deal) {
+          if (err) console.log(err)
           if (deal.length === 0) {
             result[0].score = score
             result[0].event = 'views'
@@ -50,7 +52,7 @@ module.exports = {
           } else {
             db.webhook.findAndModify({
               query: {
-                deal_id: data.deal_id,
+                deal_id: data.deal_id
               },
               update: {
                 $inc: {
@@ -59,13 +61,12 @@ module.exports = {
               },
               new: true
             }, function (err, doc, lastErrorObject) {
+              if (err) console.log(err)
               reply('update successful')
             })
           }
         })
-
       })
-
     }
   }
 }
