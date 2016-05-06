@@ -25,11 +25,11 @@ module.exports = {
       }
 
       db.promotions.find({
-        deal_id: data.deal_id
+        ticket_id: data.ticket_id
       }).limit(1, function (err, result) {
         if (err) console.log(err)
         db.webhook.find({
-          deal_id: data.deal_id,
+          ticket_id: data.ticket_id,
           user_id: data.user_id,
           event_name: request.payload.data.item.event_name
         }).limit(1, function (err, deal) {
@@ -53,7 +53,7 @@ module.exports = {
           } else {
             db.webhook.findAndModify({
               query: {
-                deal_id: data.deal_id,
+                ticket_id: data.ticket_id,
                 user_id: data.user_id,
                 event_name: request.payload.data.item.event_name
               },

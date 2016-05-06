@@ -127,11 +127,11 @@ module.exports = function (server) {
   }, {
     method: 'POST',
     path: '/webhook/follow',
-    config: controller.webhook.index
+    config: controller.webhook_two.index
   }, {
     method: 'POST',
     path: '/webhook/unfollow',
-    config: controller.webhook.index
+    config: controller.webhook_two.index
   }, {
     method: 'POST',
     path: '/webhook/like',
@@ -143,7 +143,7 @@ module.exports = function (server) {
   }, {
     method: 'POST',
     path: '/webhook/join',
-    config: controller.webhook.index
+    config: controller.webhook_three.index
   }, {
     method: 'POST',
     path: '/webhook/share',
