@@ -31,12 +31,12 @@ module.exports = {
         db.webhook.find({
           deal_id: data.deal_id,
           user_id: data.user_id,
-          event_name: request.payload.data.item.event_name
+        // event_name: request.payload.data.item.event_name
         }).limit(1, function (err, deal) {
           if (err) console.log(err)
           if (deal.length === 0) {
             result[0].score = score
-            result[0].event_name = request.payload.data.item.event_name
+            // result[0].event_name = request.payload.data.item.event_name
             result[0].user_id = data.user_id,
             result[0].timestamp = new Date().toISOString()
             delete result[0]['_id']
