@@ -122,7 +122,31 @@ module.exports = function (server) {
     config: controller.base.business
   }, {
     method: 'POST',
-    path: '/webhook',
+    path: '/webhook/view',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/follow',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/unfollow',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/like',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/unlike',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/join',
+    config: controller.webhook.index
+  }, {
+    method: 'POST',
+    path: '/webhook/share',
     config: controller.webhook.index
   }, {
     method: 'GET',
