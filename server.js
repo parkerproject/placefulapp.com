@@ -43,7 +43,7 @@ server.register([Vision, Inert], (err) => {
 
   server.route({
     method: 'GET',
-    path: '/mob/{key}/{title}',
+    path: '/m/{key}/{title}',
     handler(request, reply) {
       db.guides.find({ key: request.params.key }).limit(1, (error, result) => {
         if (error) console.log(error);

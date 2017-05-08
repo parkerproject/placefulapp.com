@@ -36,6 +36,7 @@
     "gulp-nunjucks-render": "^2.0.0",
     "gulp-replace": "^0.5.4",
     "pump": "^1.0.1",
+    "supervisor": "^0.12.0",
     "sw-toolbox": "^3.2.1"
   }
 }

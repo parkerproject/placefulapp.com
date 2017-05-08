@@ -6,20 +6,20 @@
  * The most important one is nunjucks-render
  * Renders the .nunjucks files to browser friendly html files
  */
-let nunjucksRender = require('gulp-nunjucks-render'),
-  htmlmin = require('gulp-htmlmin'),
-  changed = require('gulp-changed'),
-  replace = require('gulp-replace'),
-  pump = require('pump'),
-  gulp = require('gulp');
+const nunjucksRender = require('gulp-nunjucks-render');
+const htmlmin = require('gulp-htmlmin');
+const changed = require('gulp-changed');
+const replace = require('gulp-replace');
+const pump = require('pump');
+const gulp = require('gulp');
 
 /**
  * Renders the .nunjucks & .html files from source to distribution
  */
 gulp.task('nunjucksRender', () => {
   gulp.src(['source/*.+(html|nunjucks)'])
-		.pipe(nunjucksRender({ path: ['source'] }))
-		.pipe(gulp.dest('dist'));
+.pipe(nunjucksRender({ path: ['source'] }))
+.pipe(gulp.dest('dist'));
 });
 
 /**
@@ -27,28 +27,28 @@ gulp.task('nunjucksRender', () => {
  */
 gulp.task('copy', () => {
   gulp.src(['source/assets/Mail_Sender/**/*'])
-		.pipe(gulp.dest('dist/assets/Mail_Sender'));
+.pipe(gulp.dest('dist/assets/Mail_Sender'));
 
   gulp.src(['source/*.json'])
-		.pipe(gulp.dest('dist'));
+.pipe(gulp.dest('dist'));
 
   gulp.src(['source/.htaccess'])
-		.pipe(gulp.dest('dist'));
+.pipe(gulp.dest('dist'));
 
   gulp.src(['source/*.js'])
-		.pipe(gulp.dest('dist'));
+.pipe(gulp.dest('dist'));
 
   gulp.src(['node_modules/sw-toolbox/*.js'])
-		.pipe(gulp.dest('dist'));
+.pipe(gulp.dest('dist'));
 
   gulp.src(['node_modules/sw-toolbox/*.map.json'])
-		.pipe(gulp.dest('dist'));
+.pipe(gulp.dest('dist'));
 
   gulp.src(['source/assets/video/*'])
-		.pipe(gulp.dest('dist/assets/video'));
+.pipe(gulp.dest('dist/assets/video'));
 
   gulp.src(['source/assets/img/**/*'])
-		.pipe(gulp.dest('dist/assets/img'));
+.pipe(gulp.dest('dist/assets/img'));
 });
 
 /**
@@ -66,15 +66,8 @@ gulp.task('dist', ['nunjucksRender', 'copy'], () => {});
  * Copies everything in assets folder
  */
 gulp.task('replaceAndCopy', () => {
-  gulp.src(['dist/*.*', 'dist/.htaccess', 'dist/*.map.json'])
-		.pipe(replace(/(\/MobNews\/LTR\/)dist\//g, '/themes$1'))
-		.pipe(replace(/http:\/\/localhost/g, 'https://mobius.studio'))
-		.pipe(replace(/https:\/\/localhost/g, 'https://mobius.studio'))
-		.pipe(replace(/assets\/img/g, 'https://img.mobius.studio/themes/MobNews/LTR/assets/img'))
-		.pipe(gulp.dest('prod'));
-
-  gulp.src(['dist/assets/**/*'])
-		.pipe(gulp.dest('prod/assets'));
+  gulp.src(['dist/*.*', 'dist/.htaccess', 'dist/*.map.json']).pipe(gulp.dest('prod'));
+  gulp.src(['dist/assets/**/*']).pipe(gulp.dest('prod/assets'));
 });
 
 /**
@@ -93,11 +86,11 @@ gulp.task('minify', (cb) => {
             minifyCSS: true,
             minifyJS: false,
           },
-				),
+        ),
         gulp.dest('prod'),
       ],
-			cb,
-		);
+cb,
+);
   }, 100);
 });
 
