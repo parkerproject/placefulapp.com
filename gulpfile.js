@@ -1,0 +1,109 @@
+
+/**
+ * Required and included Gulp & Gulp Packages
+ *
+ * These are required to build distribution,
+ * The most important one is nunjucks-render
+ * Renders the .nunjucks files to browser friendly html files
+ */
+const nunjucksRender = require('gulp-nunjucks-render');
+const htmlmin = require('gulp-htmlmin');
+const changed = require('gulp-changed');
+const replace = require('gulp-replace');
+const pump = require('pump');
+const gulp = require('gulp');
+
+/**
+ * Renders the .nunjucks & .html files from source to distribution
+ */
+gulp.task('nunjucksRender', () => {
+  gulp.src(['source/*.+(html|nunjucks)'])
+.pipe(nunjucksRender({ path: ['source'] }))
+.pipe(gulp.dest('dist'));
+});
+
+/**
+ * Copies the given "src" to distribution
+ */
+gulp.task('copy', () => {
+  gulp.src(['source/assets/Mail_Sender/**/*'])
+.pipe(gulp.dest('dist/assets/Mail_Sender'));
+
+  gulp.src(['source/*.json'])
+.pipe(gulp.dest('dist'));
+
+  gulp.src(['source/.htaccess'])
+.pipe(gulp.dest('dist'));
+
+  gulp.src(['source/*.js'])
+.pipe(gulp.dest('dist'));
+
+  gulp.src(['node_modules/sw-toolbox/*.js'])
+.pipe(gulp.dest('dist'));
+
+  gulp.src(['node_modules/sw-toolbox/*.map.json'])
+.pipe(gulp.dest('dist'));
+
+  gulp.src(['source/assets/video/*'])
+.pipe(gulp.dest('dist/assets/video'));
+
+  gulp.src(['source/assets/img/**/*'])
+.pipe(gulp.dest('dist/assets/img'));
+});
+
+/**
+ * Gulp dist task,
+ * This allows you to run just "gulp dist" command from terminal,
+ * And It automatically runs tasks above.
+ *
+ * To run individual task you can run "gulp TASKNAME",
+ * E.g. "gulp nunjucksRender".
+ */
+gulp.task('dist', ['nunjucksRender', 'copy'], () => {});
+
+/**
+ * Replaces the strings in files with the regular expression
+ * Copies everything in assets folder
+ */
+gulp.task('replaceAndCopy', () => {
+  gulp.src(['dist/*.*', 'dist/.htaccess', 'dist/*.map.json']).pipe(gulp.dest('prod'));
+  gulp.src(['dist/assets/**/*']).pipe(gulp.dest('prod/assets'));
+});
+
+/**
+ * Minifies every possible file
+ */
+gulp.task('minify', (cb) => {
+  setTimeout((cb) => {
+    pump(
+      [
+        gulp.src('prod/*.html'),
+        htmlmin(
+          {
+            collapseWhitespace: true,
+            processScripts: ['application/ld+json'],
+            removeComments: true,
+            minifyCSS: true,
+            minifyJS: false,
+          },
+        ),
+        gulp.dest('prod'),
+      ],
+cb,
+);
+  }, 100);
+});
+
+/**
+ * Gulp prod task,
+ * This allows you to run just "gulp prod" command from terminal,
+ *
+ * I created this task because my production and localhost paths are -
+ * different. With this task, you can copy everything in dist/ folder -
+ * and paste in prod/ folder then use Regular Expression to replace -
+ * individual text with new text. minify task also minifies all .html files.
+ *
+ * To run individual task you can run "gulp TASKNAME",
+ * E.g. "gulp nunjucksRender".
+ */
+gulp.task('prod', ['replaceAndCopy', 'minify'], () => {});
