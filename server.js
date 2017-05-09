@@ -21,7 +21,7 @@ const rootRef = firebaseApp.database().ref();
 const server = new Hapi.Server();
 server.connection({ port: 3000, host: '0.0.0.0' });
 
-server.register([Vision, Inert], (err) => {
+server.register([Vision, Inert], (err)=>{
   if (err) {
     throw err;
   }
