@@ -4,18 +4,18 @@ const Hapi = require('hapi');
 const html = require('swig');
 const Inert = require('inert');
 const Vision = require('vision');
-const firebase = require('firebase');
+// const firebase = require('firebase');
 
-const db = require('./db');
-
-const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
-  storageBucket: 'new-placeful.appspot.com',
-};
-
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const rootRef = firebaseApp.database().ref();
+// const db = require('./db');
+//
+// const firebaseConfig = {
+//   apiKey: process.env.FIREBASE_API_KEY,
+//   databaseURL: process.env.FIREBASE_DATABASE_URL,
+//   storageBucket: 'new-placeful.appspot.com',
+// };
+//
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+// const rootRef = firebaseApp.database().ref();
 
 
 const server = new Hapi.Server();
@@ -45,18 +45,19 @@ server.register([Vision, Inert], (err) => {
     method: 'GET',
     path: '/m/{key}/{title}',
     handler(request, reply) {
-      db.guides.find({ key: request.params.key }).limit(1, (error, result) => {
-        if (error) console.log(error);
-
-        const guide = { guide: result[0] };
-
-        const placesRef = rootRef.child('places').child(request.params.key);
-
-        placesRef.on('value', (response) => {
-          guide.places = response.val();
-          reply.view('index', guide);
-        });
-      });
+      // db.guides.find({ key: request.params.key }).limit(1, (error, result) => {
+      //   if (error) console.log(error);
+      //
+      //   const guide = { guide: result[0] };
+      //
+      //   const placesRef = rootRef.child('places').child(request.params.key);
+      //
+      //   placesRef.on('value', (response) => {
+      //     guide.places = response.val();
+      //     reply.view('index', guide);
+      //   });
+      // });
+      reply.redirect('https://placefulapp.com/');
     },
   });
 
